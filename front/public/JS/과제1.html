@@ -18,7 +18,25 @@
 				//백원 : 7개
 				
 				const input = prompt('금액을 입력해주세요')
-				console.log(input/100000)
+				const input1 =input%100000
+				const 십만원 =(input-input1)/100000
+				
+				const input2 = input1%10000
+				const 만원 = (input1-input2)/10000
+				
+				const input3 = input2%1000
+				const 천원 =( input2-input3)/1000
+				
+				const input4 =input3%100
+				const 백원 = (input3-input4)/100
+				
+				
+				
+				
+				
+				
+				
+				console.log('십만원:'+십만원+'장','만원:'+만원+'장','천원:'+천원+'장','백원:'+백원+'개')
 				
 				
 				
@@ -26,16 +44,53 @@
 				
 		// 문제2 : prompt함수 로 반지름 입력받아 원 넓이 출력 
 			// 원 넓이 공식  : 반지름 * 반지름 * 원주율[3.14]
+			
+			const r = prompt('반지름을 입력해주세요')
+			console.log(r*r*3.14)
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		// 문제3 : prompt함수 로 숫자를 입력받아  입력받은 값이 3의 배수인지 체크
 			// 결과 예상 출력 
 				// 3의 배수이면 true 출력 / 아니면 false
+				
+		const x= prompt('문제3')
+		if(x%3<1) {console.log('true')}
+		if(1<=x%3 && x%3<=2) {console.log('false')}
+		
+		
+			
+		
+		
+		
+				
+				
+		
+		
 		// 문제4 : prompt함수 로 숫자를 입력받아  입력받은 값이 홀수인지 체크
 			// 결과 예상 출력 
 				// 홀수이면 true 출력 / 짝수이면 false
+				
+				
+				
+				const y= prompt('문제4')
+		if(y%2<1) {console.log('false')}
+		if(y%2==1) {console.log('true')}
+			 	
+				
+				
 		// 문제5 : 두 실수를 입력받아 앞실수의 값이 뒤 실수의 값의 몇% 인지 출력하기 
 			// 예) 54.5    84.3 이면    결과 : 64.~~%
 		
-		
+		const z =prompt('문제5')
+	    const w =prompt('문제5')
+		console.log(z/w*100+'%')
 		
 	</script>
 	
