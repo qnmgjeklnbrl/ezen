@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+form{
+	width: 700px;	/*가로길이*/
+	margin: 0 auto;	/*가로 가운데정렬 */
+}
+table{
+	width : 700px;
+	border-top: solid 3px black; /*위 테두리*/
+}
+td{
+	border-bottom: solid 1px #eeeeee;
+	padding: 5px;
+}
+td input{ /* 하위식별자 선택시 : 상위식별자 하위식별자 */
+	width: 500px;	height: 30px;
+}
+td textarea {
+	width: 500px;	height: 100px; resize: none;
+}
+.btnbox{ text-align: right; }
+.btnbox input{ padding: 5px 20px; margin: 20px 5px}
