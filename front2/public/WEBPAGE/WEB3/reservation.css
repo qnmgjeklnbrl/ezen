@@ -1,0 +1,45 @@
+@charset "UTF-8";
+#rsv_bgimg{text-align: center;
+		   background-image: url("img/sub_reservation.jpg");
+		   clear: both;
+		   background-repeat: no-repeat;
+		   background-position: top center;
+		   height: 350px;
+		   color: white;
+		   padding-top: 150px;
+}
+.calendar table{
+		  border-collapse: collapse;
+		  background-color: white;
+		  margin: 0 auto;
+		  width: 550px;
+		  height: 350px;
+		  
+}
+.calendar{background-color: #fcf9ea;
+		  text-align: center;
+		  width: 700px;
+		  height: 450px;
+		  margin-bottom: 20px;
+	
+	
+	
+	
+}
+.day_name{height: 20px;
+		  text-align: center;
+
+}
+td{width: 50px;
+text-align: left;vertical-align: top;
+}
+.sun{color: red;}
+.content_rsv{position:absolute; right:210px;bottom:150px;
+
+			width: 200px;
+}
+.info{color: green;
+width: 300px;}
+h3{border-left: solid 10px gray;
+   padding-left: 20px;
+}
