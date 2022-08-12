@@ -26,10 +26,10 @@
 	
 	
 }
-.day_name{height: 20px;
-		  text-align: center;
+.day_name{height: 20px;}
+.day_name td{text-align: center;}
 
-}
+
 td{width: 50px;
 text-align: left;vertical-align: top;
 }
@@ -40,6 +40,7 @@ text-align: left;vertical-align: top;
 }
 .info{color: green;
 width: 300px;}
-h3{border-left: solid 10px gray;
-   padding-left: 20px;
+.content_title{border-left: solid 10px gray;
+   padding-left: 10px;
+    
 }
