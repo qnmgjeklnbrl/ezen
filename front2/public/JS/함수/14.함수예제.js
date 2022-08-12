@@ -27,6 +27,3 @@ function 윤년버튼함수( ){
 					// innerHTM : html 작성 
 					
 }
-/**
- * 
- */
