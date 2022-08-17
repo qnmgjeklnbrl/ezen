@@ -15,7 +15,14 @@ li{ list-style-type: none; }
 .top_menu{ position: absolute; right: 20px; top:30px; }
 .top_menu li{ display: inline; margin-left: 20px; }
 
-#int_bgimg{background-image:url}
+#int_bgimg{text-align: center;
+		   background-image: url("img/sub_intro.jpg");
+		   clear: both;
+		   background-repeat: no-repeat;
+		   background-position: top center;
+		   height: 350px;
+		   color: white;
+		   padding-top: 150px;
 
 
 
