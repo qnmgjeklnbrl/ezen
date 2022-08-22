@@ -1,0 +1,51 @@
+
+.container{
+	overflow: auto;
+	scroll-snap-type: y mandatory;
+	height: 100vh;
+    width: 100vw;
+}
+section{
+	scroll-snap-align : start;
+	
+	background-size: cover ;
+	background-position:center; 
+	background-repeat: no-repeat; 
+	background-size: 100%; 
+}	
+.sec_1{
+	background-image: url("../이미지/포스터.jfif"); 
+	text-align: center;
+	height: 300vh;
+	
+	
+}
+.intro{
+	font-size: 30px;
+	color: white;
+	
+	
+}
+
+
+.sec_2{
+	background-image: url("https://t1.daumcdn.net/movie/eecf986b580eeb3b7704d1952f57925c1188d5d6"); 
+	text-align: center;
+	height: 100vh;
+	
+}
+.float{
+	font-size: 80px;
+	color: gray;
+	
+	
+	
+}
+
+.sec_3{
+	background-image: url("https://t1.daumcdn.net/movie/df853170ff5157b4574944a4d4d7e7d4d15f3ad8"); 
+	text-align: center;
+	height: 300vh;
+
+	
+}

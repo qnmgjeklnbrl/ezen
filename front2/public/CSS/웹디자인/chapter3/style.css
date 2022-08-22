@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+.post_title{
+	padding-bottom: 10px; 		/* 아래 안쪽 여백 */
+	
+	/* 배경 그라데이션 */
+	background-image: linear-gradient(45deg, #fff 30%, #ccc 30%, #ccc 50%, #fff 50%, 
+	#fff 80%, #ccc 80%, #ccc 100%);
+	
+	
+	background-size: 6px 6px;
+	margin-bottom: 1.5rem;
+}
+.post_title h2{
+	background-color: #ffffff; 
+	padding:  0 0.5rem .875rem;
+	font-size: 1.5rem; /* 폰트 사이즈 */
+	font-family: '굴림'; /* 폰트 */
+	font-weight: 500; /* 폰트 굵기 */	
+	line-height: 1.5;	/* 줄 간격 */
+}
+.post_title a{
+	color : #949087;
+	text-decoration: none; /* 링크 밑줄제거 */
+}
+
+/* 미디어쿼리 : 디바이스 크기에 따라 css 설정 */
+@media( min-width : 600px)  {
+	
+	.container{
+		display: flex;
+		justify-content: space-between;
+	}
+	main{
+		width: 68%
+	}	
+	aside{
+		width: 26%;
+	}
+	
+	
+	/* 
+		min-width : 600px;  : 최소 가로사이즈 600px 
+		[ 600px 이상에서 사용되는 css ]
+		max-width : 600px;	: 최대 가로사이즈 600px;
+		[ 600px 이하에서 사용되는 css ] 
+		
+		min-height : 600px; : 최소 세로사이즈 
+		max-height : 600px;	: 최대 세로사이즈
+	*/
+}
