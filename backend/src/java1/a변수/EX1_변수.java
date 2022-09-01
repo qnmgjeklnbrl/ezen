@@ -1,4 +1,4 @@
-package java1.a.변수;
+package java1.a변수;
 
 public class EX1_변수 {
 	public static void main(String[] args) {
