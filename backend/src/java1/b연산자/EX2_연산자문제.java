@@ -42,14 +42,78 @@ public class EX2_연산자문제 { // class s
 		int 십만원 = 금액/100000;
 		int 만원 = 금액%100000/10000;
 		int 천원 = 금액%10000/1000;
-		System.out.print("문2) 십만원:"+십만원+"장"+"\n"+"만원: "+만원+"장"+"\n"+"천원: "+천원+"장");
+		System.out.println("문2) 십만원:"+십만원+"장"+"\n"+"만원: "+만원+"장"+"\n"+"천원: "+천원+"장");
 		
 		
 		
 		
-		System.out.print("문3) 정수입력: "); int 정수 = scanner.nextInt();
-		String 확인 =  정수%7==0 ? "맞다" : "아니다";
-	
+		System.out.print("문3) 정수입력: "); int 정수3 = scanner.nextInt();
+		String 확인 =  정수3%7==0 ? "맞다" : "아니다";
+		System.out.println("문3) 7의배수 확인: "+확인);
+		
+		
+		
+		System.out.print("문4) 정수입력: "); int 정수4 = scanner.nextInt();
+		String 확인2 =  정수4%2==0 ? "짝수" : "홀수";
+		System.out.println("문4) 홀짝 확인: "+확인2);
+		
+		
+		System.out.print("문5) 정수입력: "); int 정수5 = scanner.nextInt();
+		String 확인3 =  정수5%7==0 && 정수5%2==0 ? "참" : "거짓";
+		System.out.println("문5) 7의배수 이면서 짝수 확인: "+확인3);
+		
+		
+		System.out.print("문6) 정수1입력: ")	;int 정수6 = scanner.nextInt();
+		System.out.print("문6) 정수2입력: ")	;	int 정수7 = scanner.nextInt();
+		
+		int 확인4 = 정수6>정수7 ? 정수6 : 정수7;
+		System.out.println(확인4);
+		
+		
+		System.out.println("문7) 반지름: "); int r = scanner.nextInt();
+		System.out.println("원의 넓이 : "+r*r*3.14);
+		
+		System.out.print("문8) 실수1 입력: ");	double 실수1 = scanner.nextDouble();
+		System.out.print("문8) 실수2 입력: "); double 실수2 = scanner.nextDouble();
+		System.out.printf("문8) 결과 : %.2f%% ",실수1/실수2*100);
+		
+		
+		
+		
+		
+		System.out.print("\n문9) 윗변: "); double 윗변  = scanner.nextDouble();
+		System.out.print("문9) 아랫변: "); double 아랫변  = scanner.nextDouble();
+		System.out.print("문9) 높이: "); double 높이 = scanner.nextDouble();
+		
+		
+		System.out.println("문9) 사다리꼴의 넓이: "+(윗변+아랫변)*높이/2);
+		
+		
+		System.out.print("문10) 키 입력: "); double 키 = scanner.nextDouble();
+		System.out.println("문10) 표준체중: "+(키-100)*0.9);
+		
+		
+		System.out.print("문11) 키 입력: "); double 키1 = scanner.nextDouble();
+		System.out.print("문11) 몸무게 입력: "); double 몸무게 = scanner.nextDouble();
+		
+		System.out.println("문12) BMI : "+몸무게 / ( (키1/100) * (키1/100) ) );
+		
+		
+		System.out.println("문13) 중간고사 : "); double 중간고사 = scanner.nextDouble();
+		System.out.println("문13) 기말고사 : "); double 기말고사 = scanner.nextDouble();
+		System.out.println("문13) 수행평가 : "); double 수행평가 = scanner.nextDouble();
+		
+		System.out.printf("문13) 점수: %.2f", 중간고사*0.3+기말고사*0.3+수행평가*0.4);
+		
+		
+		int x = 10;
+		int y = x-- + 5 + --x;//1.x-- +5  ==>  10+5   후위감소이므로 +연산후 x 감소 ; x ==9
+							  // 2.15 + --x	 ==> 전위감소이므로 연산전 x 감소 ; x==8 , 따라서 15 + 8 =23
+							  //3. y = 23  x==8
+ 		System.out.printf(" x의 값 : %d , y의값 :  %d ", x, y);
+		
+		
+		
 		
 		
 		/*
