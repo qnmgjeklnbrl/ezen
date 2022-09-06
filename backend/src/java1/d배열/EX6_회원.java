@@ -7,7 +7,7 @@ public class EX6_회원 { // class s
 	public static void main(String[] args) { // main s
 		
 		// 0. 메모리
-		String[][] memberlist = new String[100][4]; // 문자열 400개를 저장할수 있는 배열 선언 
+		String[][] memberlist = new String[100][4]; // 문자열 400개를 저장할수 있는 배열 선언 [ 초기값 : null 400 개 ] 
 		Scanner scanner = new Scanner(System.in);	// 입력객체
 		
 		// 1. 무한루프[ 프로그램 실행 ] 
@@ -19,32 +19,56 @@ public class EX6_회원 { // class s
 			
 			if( btn == 1 )   // 1 입력했을떄
 				{ 
+				System.out.println("================= 로그인 페이지 ===============");
 					// 1. 아이디 / 비밀번호  입력받는다.
 					System.out.print("아이디 : ");	String id = scanner.next();
 					System.out.print("비밀번호 : ");	String password = scanner.next();
 					// 2. 배열내 모든 항목[인덱스]와 비교해서 입력한 아이디와 비밀번호 있는지 확인 
-					int login = 0 ; // 로그인 처리에 대한 상태를 저장하는 변수 
+					int logincheck = 0 ; // *로그인 처리에 대한 상태를 저장하는 변수 
 					for( int i = 0 ; i<memberlist.length ; i++ ) {
 						if( memberlist[i][0] != null ) { 
 							// 해당 인덱스가 null 아니면서 
 							if( memberlist[i][0].equals( id ) ) { 
 								// 해당 인덱스의 아이디가 입력받은 id와 같으면서 
-								login = 2;	// 아이디는 맞으나 비밀번호 틀렸을때 
+								logincheck = 2;	// 아이디는 맞으나 비밀번호 틀렸을때 
 								if( memberlist[i][1].equals( password ) ) {
 									// 해당 인덱스의 비밀번호가 입력받은 password 와 같으면 
 									System.out.println("안내) 로그인 성공 !!");
-									login = 1; // 로그인 성공 [ 아이디와 비밀번호가 모두 맞았을때 ]
-										// (추후코드) 로그인 메뉴 // 
+									logincheck = 1; // 로그인 성공 [ 아이디와 비밀번호가 모두 맞았을때 ]
+										//로그인 메뉴 
+										while(true) {
+											System.out.print("회원 메뉴 : 1.회원탈퇴 2.로그아웃 ");
+											int btn2 = scanner.nextInt();
+											if( btn2 == 1 ) { 
+												// ------------------------------------------- //
+												// i = 로그인 성공한 인덱스 = 로그인한 회원의 인덱스 
+												memberlist[i][0] = null;	memberlist[i][1] = null;
+												memberlist[i][2] = null;	memberlist[i][3] = null;
+													// 삭제된 회원 뒤로 한칸씩 당기기
+													for( int j = i ; j<memberlist.length ; j++  ) {
+														memberlist[j][0] = memberlist[j+1][0];
+														memberlist[j][1] = memberlist[j+1][1];
+														memberlist[j][2] = memberlist[j+1][2];
+														memberlist[j][3] = memberlist[j+1][3];
+														// 다음 인덱스의 null 이면 [ 회원이 없다는 뜻으로 ]
+														if( memberlist[j+1][0] == null ) break; 
+													} // for end 
+												// --------------------------------------------// 
+												System.out.println("안내) 회원탈퇴가 되었습니다.");
+												break;
+											}
+											else if( btn2 == 2 ) { break; }
+										} // while end 
 									break;
 								} // if end 
 							}  // if end
 						} // if end 
 					} // for end 
 					// // 3. 있으면 로그인 성공 없으면 로그인 실패
-					if( login == 0 ) { System.out.println("안내) 동일한 아이디가 없습니다."); } 
-					else if( login == 2){ System.out.println("안내) 비밀번호가 일치 하지 않습니다.");}
-					else if( login == 1) { System.out.println("안내) 로그아웃 되었습니다.");}
-				}
+					if( logincheck == 0 ) { System.out.println("안내) 동일한 아이디가 없습니다."); } 
+					else if( logincheck == 2){ System.out.println("안내) 비밀번호가 일치 하지 않습니다.");}
+					else if( logincheck == 1) { System.out.println("안내) 로그아웃 되었습니다.");}
+				} // if end 
 			else if( btn == 2 )   // 2 입력했을떄
 				{  
 					System.out.println("================= 회원가입 페이지 ===============");
@@ -81,60 +105,56 @@ public class EX6_회원 { // class s
 							}// for end 
 					} // if 3 end
 				} // else if end 
-			else if( btn == 3 ){   // 3 입력했을떄
-				
-					System.out.print("이름: "); String name =scanner.next();
-					System.out.print("전화번호: "); String phone =scanner.next();
-					for(int i = 0 ; i <memberlist.length; i++) {
-						if(memberlist[i][0] != null 
-						   && memberlist[i][2].equals(name)
-						   && memberlist[i][3].equals(phone)) {
-							
-								
-									System.out.println("찾으시는 아이디는"+memberlist[i][0]+"입니다.");
-									break;
+			else if( btn == 3 )   // 3 입력했을떄
+				{ 
+					System.out.println("================= 아이디찾기 페이지 ===============");
+					// 1. 이름  , 전화번호 입력받기
+					System.out.print("이름 : "); 	String name = scanner.next();
+					System.out.print("전화번호 : ");	String phone = scanner.next();
+					// 2. 배열내 모든 항목 비교해서 동일한 이름,전화번호
+					for( int i = 0 ; i<memberlist.length ; i++ ) {	// 모든 항목 출력 
+						if( memberlist[i][0] != null && 		// null 아니면서 
+								memberlist[i][2].equals(name) && 	// 이름이 같고 
+									memberlist[i][3].equals( phone ) ) { // 전화번호가 같으면
+							System.out.println("안내) 회원님의 아이디 : " + memberlist[i][0]);
+							break;
+						} // if end
+						// 3. 존재하면 해당 아이디 출력 아니면 미출력
+						if( i == memberlist.length-1 ){ // i가 마지막인덱스와 같으면 [ 모두 검사했는데 조건 못찾음 ] 
+							System.out.println("안내) 동일한 회원정보가 없습니다. ");
+						} // if end 
+					} // for end 
+					
+				}
+			else if( btn == 4 )   // 4 입력했을떄
+				{ 
+					System.out.println("================= 비밀번호 페이지 ===============");
+					// 1. 아이디 , 전화번호 입력받기 
+					System.out.print("아이디 : "); 	String id = scanner.next();
+					System.out.print("전화번호 : ");	String phone = scanner.next();
+					// 2. 배열내 모든 항목 비교해서 동일한 아이디 , 전화번호 
+					for( int i = 0 ; i<memberlist.length ; i++ ) { // 인덱스 0 부터 마지막인덱스까지 반복
+						if( memberlist[i][0] != null &&
+								memberlist[i][0].equals(id) &&
+									memberlist[i][3].equals(phone) ) {
+							System.out.println("안내) 회원님의 비밀번호 : " + memberlist[i][1] );
+							break;
 						}
-						if(i==memberlist.length-1) {
-							System.out.println("일치하는 회원정보가 없습니다.");
-						}	
-			
-						
-						
-						
+						// i가 마지막 인덱스 이면 	[ 인덱스 = 길이-1 ]
+						// 3. 존재하면 해당 비밀번호 출력 아니면 미출력
+						if( i == memberlist.length-1 ) {
+							System.out.println("안내) 동일한 회원정보가 없습니다. ");
+						}
 					}
-					
-				
-				}
-			else if( btn == 4 ){ // 4 입력했을떄
-				
-				System.out.print("아이디: "); String id =scanner.next();
-				System.out.print("전화번호: "); String phone =scanner.next();
-				for(int i = 0 ; i <memberlist.length; i++) {
-					if(memberlist[i][0] != null 
-					   && memberlist[i][0].equals(id)
-					   && memberlist[i][3].equals(phone)) {
-						
-							
-								System.out.println("찾으시는 비밀번호는"+memberlist[i][1]+"입니다.");
-								break;
-					}
-					if(i==memberlist.length-1) {
-						System.out.println("일치하는 회원정보가 없습니다.");
-					}
-		
-					
-					
 					
 				}
-				
-				
-				
-			}
 			else { System.out.println("안내) 알수 없는 번호입니다. "); } // 그외 입력했을떄
 
 		} // while end 
 	} // main e
 } // class e 
+
+
 
 /*
  	회원제 프로그램 구현
@@ -160,94 +180,6 @@ public class EX6_회원 { // class s
  		[출력]
  			1. 메뉴 : 1.회원가입 2.로그인 3.아이디찾기 4.비밀번호찾기 
  */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                                                     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                                                 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
