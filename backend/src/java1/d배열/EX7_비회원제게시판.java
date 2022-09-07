@@ -11,7 +11,7 @@ public class EX7_비회원제게시판 {
 			System.out.println("====================커뮤니티=============================");
 			System.out.println("번호              작성자                     제목       ");
 			for(int i =0 ; i<boardList.length; i++) {//반복문으로 배열에 저장된 글이 있는지 확인
-				if(boardList[i][0]!=null) {				//만약에 i번째에 열에 데이터가 저장되어 있으면 
+				if(boardList[i][0]!=null) {				//만약에 i번째에 에 데이터가 저장되어 있으면 
 					System.out.println(i+"   \t\t"+boardList[i][2]+"   \t\t\t"+boardList[i][0]);//i번째 글의 인덱스와 작성자 제목을 출력
 				}
 			}
