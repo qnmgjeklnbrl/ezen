@@ -20,10 +20,11 @@ public class Elevator {
 			System.out.println(e_c);
 			if(o_u[i]==true || i_b[i]==true) {
 				System.out.println("문이열립니다.");
-			}else if () {
-				
-			}else {
-				
+				o_u[i]=false; i_b[i]=false;
+			}else if (o_u[i+1]==true) {
+				e_c++;
+			}else if (o_d[i+1]==true) {
+				e_c++;
 			}
 			
 		}
