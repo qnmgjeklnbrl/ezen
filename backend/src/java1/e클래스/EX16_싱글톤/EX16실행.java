@@ -6,7 +6,7 @@ public class EX16실행 {
 		
 		//객체 선언 [클래스명 객체명 = new 생성자(); ]
 		
-		Simgleton s1 = new Singleton;
+		//Simgleton s1 = new Singleton;
 		
 		
 	}
