@@ -55,9 +55,51 @@ public class ExpenseDAO {
 		return list;
 	}
 	
+	// 4. 내용삭제 SQL 메소드
+	boolean delete( int eno ) {
+		String sql ="delete from expense where eno = ?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt( 1 , eno );
+			ps.executeUpdate(); return true;
+		}catch (Exception e) { }
+		return false;
+	}
+	
+	// 3. 
+	boolean update( ExpenseDTO dto ) {
+		String sql= "update expense set "
+				+ "edate = ? , "
+				+ "emoney = ? , "
+				+ "ecomment = ?  "
+				+ "where eno = ? ";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString( 1 , dto.getEdate() );
+			ps.setInt( 2 , dto.getEmoney() );
+			ps.setString( 3 , dto.getEcomment() );
+			ps.setInt( 4 , dto.getEno() );
+			ps.executeUpdate(); return true;
+		}catch (Exception e) { System.out.println("DB오류:"+e);} 
+		return false;
+		
+	}
+	
+	
 	
 
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
