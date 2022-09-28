@@ -5,14 +5,31 @@ public class Simgleton {
 		//방법 : 외부에서 생성자를 못쓰게 하자
 		//private : 현재 클래스에서만 호츨 가능
 		//public : 프로젝트 어디서든 호출 가능
-	
+	private static Simgleton simgleton = new Simgleton();
 	private Simgleton() {
 		
 		
 	}
+
 	
 	
 	
 	
-  static final  double  EARTH_RADIUS = 6400;
+  public static Simgleton getSimgleton() {
+		return simgleton;
+	}
+
+
+
+
+
+	public static void setSimgleton(Simgleton simgleton) {
+		Simgleton.simgleton = simgleton;
+	}
+
+
+
+
+
+static final  double  EARTH_RADIUS = 6400;
 }
