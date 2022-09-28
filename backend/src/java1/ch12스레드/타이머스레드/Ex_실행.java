@@ -10,6 +10,6 @@ public class Ex_실행 {
 		
 		
 	};
-	asd
+	
 
 }
