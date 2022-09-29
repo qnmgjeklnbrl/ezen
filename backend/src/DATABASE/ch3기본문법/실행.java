@@ -8,11 +8,7 @@ public class 실행 {
 	public static void main(String[] args) {
 		Scanner scanner= new Scanner( System.in);
 		while(true) {
-			for( int i = 1 ; i<=19 ;i++) {
-				System.out.println( i +"번 select 예제결과 ");
-			} // for end 
-			
-			System.out.print(" 예제 번호 선택 : ");
+			System.out.print(" 1~12 예제 중 번호 선택 : ");
 			int ch = scanner.nextInt();
 			
 			// 메소드 호출 방법
@@ -37,66 +33,104 @@ public class 실행 {
 					System.out.print( dto.debut_date 	+"\n" );
 				} // for end 
 			} // ch == 1 end 
-			if (ch == 2) {
-				ArrayList<String> list	= dao.예제2결과();
-				for(String s : list) {
-					System.out.println(s);
-				}
-				System.out.println();
-			}
-			if(ch == 3) {
-				MemberDTO dto = dao.예제3결과();
-				System.out.println(dto.mem_id);
-				System.out.println(dto.mem_name);
-				System.out.println(dto.mem_number);
-				System.out.println(dto.addr);
-				System.out.println(dto.phone1);
-				System.out.println(dto.phone2);
-				System.out.println(dto.height);
-				System.out.println(dto.debut_date);
-				
-				
-			}
-			if(ch == 4) {
-				ArrayList<MemberDTO> list = dao.예제4결과();
-				for(MemberDTO dto : list) {
-					System.out.println(dto.mem_id);
-					System.out.println(dto.mem_name);
-				}
-				
-				
-			}
-			if(ch == 5) {
-				ArrayList<MemberDTO> list = dao.예제5결과();
-				for(MemberDTO dto : list) {
-					System.out.println(dto.mem_name);
-					System.out.println(dto.height);
-					System.out.println(dto.mem_number);
-					
-				}
-				
-			}
-			if(ch == 6) {
-				
-				
-			}
-			if(ch == 7) {
 			
-				
+			// 2. 
+			if( ch == 2 ) {
+				ArrayList< String > list = dao.예제2결과();
+				System.out.println("---------------- 예제2 결과물 ---------------");
+				for( String s : list ) {
+					System.out.print( s +"\t");
+				} // for end 
+				System.out.println();
+			} // ch == 2 end 
+			
+			// 3. 
+			if( ch == 3 ) {
+				MemberDTO dto = dao.예제3결과();
+				System.out.println("---------------- 예제3 결과물 ---------------");
+				System.out.print( dto.mem_id		+"\t" );
+				System.out.print( dto.mem_name 		+"\t");
+				System.out.print( dto.mem_number 	+"\t");
+				System.out.print( dto.addr 			+"\t");
+				System.out.print( dto.phone1 		+"\t" );
+				System.out.print( dto.phone2 		+"\t" );
+				System.out.print( dto.height 		+"\t" );
+				System.out.print( dto.debut_date 	+"\n" );
 			}
-			if(ch == 8) {
-				
-				
+			
+			// 4.
+			if( ch == 4 ) {
+				ArrayList<MemberDTO> list = dao.예제4결과();
+				System.out.println("---------------- 예제4 결과물 ---------------");
+				for( MemberDTO dto : list ) {
+					System.out.print( dto.mem_id		+"\t" );
+					System.out.print( dto.mem_name 		+"\n");
+				}
 			}
-			if(ch == 9) {
-	
-	
+			// 5.
+			if( ch == 5 ) {
+				ArrayList< MemberDTO > list =  dao.예제5결과();
+				System.out.println("---------------- 예제5 결과물 ---------------");
+				for( MemberDTO dto : list ) {
+					System.out.print( dto.mem_name		+"\t" );
+					System.out.print( dto.height	+"\t" );
+					System.out.print( dto.mem_number 		+"\n" );
+				}
 			}
-
+			
+			// 6.
+			if( ch == 6 ) {
+				ArrayList< MemberDTO > list =  dao.예제6결과();
+				System.out.println("---------------- 예제6 결과물 ---------------");
+				for( MemberDTO dto : list ) {
+					System.out.print( dto.mem_name		+"\t" );
+					System.out.print( dto.height	+"\t" );
+					System.out.print( dto.mem_number 		+"\n" );
+				}
+			}
+			
+			// 7.
+			if( ch == 7 ) {
+				MemberDTO dto = dao.예제7결과();
+				System.out.println("---------------- 예제7 결과물 ---------------");
+				System.out.print( dto.mem_id		+"\t" );
+				System.out.print( dto.mem_name 		+"\t");
+				System.out.print( dto.mem_number 	+"\t");
+				System.out.print( dto.addr 			+"\t");
+				System.out.print( dto.phone1 		+"\t" );
+				System.out.print( dto.phone2 		+"\t" );
+				System.out.print( dto.height 		+"\t" );
+				System.out.print( dto.debut_date 	+"\n" );
+			}
+			
+			// 8.
+			if( ch == 8 ) {
+				ArrayList< MemberDTO > list = dao.예제8결과();
+				System.out.println("---------------- 예제8 결과물 ---------------");
+				// 향상된 for문
+				for( MemberDTO dto : list ) { // list 내 모든 객체를 하나씩 반복대입
+					System.out.print( dto.mem_id		+"\t" );
+					System.out.print( dto.mem_name 		+"\t");
+					System.out.print( dto.mem_number 	+"\t");
+					System.out.print( dto.addr 			+"\t");
+					System.out.print( dto.phone1 		+"\t" );
+					System.out.print( dto.phone2 		+"\t" );
+					System.out.print( dto.height 		+"\t" );
+					System.out.print( dto.debut_date 	+"\n" );
+				} // for end 
+			}
+			
+			
+			
 			// 19.
 		} // while end
 	} // main end
 } // class end 
+
+
+
+
+
 
 
 

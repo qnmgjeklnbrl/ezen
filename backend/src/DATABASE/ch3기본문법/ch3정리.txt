@@ -1,0 +1,53 @@
+1. DROP database if exists 데이터베이스명;
+
+2. CREATE database 데이터베이스명;
+
+3. USE 데이터베이스명;
+
+4. CREATE TABLE 테이블명( 
+	필드명1 데이터타입 속성 , 
+	필드명2 데이터타입 속성 , 
+	필드명3 데이터타입 속성 
+     ); 
+5. SELECT
+	1. SELECT 필드명 FROM 테이블명 WHERE 조건 GROUP BY 그룹 HAVING 그룹조건 ORDER BY 정렬필드 ASC/DESC LIMIT 시작 , 개수;
+		1. SELECT 필드명
+			SELECT 계산식 FROM dual		[ dual : 결과 임시테이블 ] 
+			SELECT 필드명1 , 필드명2 , 필드명3 FROM 테이블명 
+			SELECT 필드명1 as 별칭 , 필드명2 as 별칭 FROM 테이블명
+			SELECT * FROM 테이블명
+			- 집계함수
+				SUM( 필드 ) 	: 해당 필드 총합계
+				AVG( 필드 )	: 해당 필드 평균 
+				COUNT( 필드명 )	: 해당 필드의 레코드수 ( NULL 제외 )
+				COUNT( * )	: 모든 레코드수 ( NULL 포함 )
+				MAX( 필드명 )	: 해당 필드 최댓값 
+				MIN( 필드명 ) 	: 해당 필드 최솟값 
+
+				- ~~별/끼리 집계[ * 그룹이 필수 ]
+			- 중복제거 
+				DISTINCT 필드명/계산식
+
+		2. FROM 테이블명
+
+		3. WHERE [그룹전] 일반조건 
+			1. 산술연산자 : + - * / div mod
+			2. 비교연산자 : >= <= > < = !=
+			3. 논리연산자 : and or not
+			4. 기타연산자 : 
+					필드명 like %김%
+					필드명 like ?김?
+					in( 값1 , 값2, 값3 )
+					between 값1 and 값2
+					is null
+					is not null 
+		4. GROUP BY 그룹 
+
+		5. HAVING [그룹후] 그룹조건
+			ex ) 성별이 남자[where]면서 학년별 국어성적의 평균이 80점이상[having]
+
+		6. ORDER BY 기준필드 ASC / DESC
+
+
+
+

@@ -1,8 +1,12 @@
 package java1.ch11API클래스;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Scanner;
+
 public class EX4_달력 {
+	
 	// 1. 필드
 	Scanner scanner = new Scanner( System.in); 	// 입력객체
 	Calendar cal = Calendar.getInstance();		// 달력객체 
@@ -24,6 +28,7 @@ public class EX4_달력 {
 				if( sweek % 7 == 0 ) { System.out.println(); } // 토요일 이후[ sweek 7의 배수이면 ]에 줄바꿈처리  
 				sweek++ ; // 일수를 출력할때마다 요일도 증가처리 
 			}
+			일정출력();
 			System.out.println("\n===================================================");
 			System.out.print("◀이전달[1]  ▶다음달[2]  검색[3]  일정추가[4] : ");
 			int btn = scanner.nextInt();
@@ -31,53 +36,63 @@ public class EX4_달력 {
 			if( btn == 1 ) { month--; if( month == 0 ) { month = 12; year--; }  }
 				// 다음달 : 월에서 1증가  [ 만일 월이 13 이면 월=1 설정 연도 1 증가 ] 
 			else if( btn == 2 ) { month++; if( month == 13 ) { month = 1; year++; }  }
-			else if( btn == 3 ) {
-				System.out.println("년도 입력: "); int syear = scanner.nextInt();
-				System.out.println("월 입력: "); int smonth = scanner.nextInt();
-				year=syear;
-				month =smonth;
-				
-				
-	
-				
-				
-				
+			else if( btn == 3 ) { 
+				System.out.print("검색 연도 : ");	int inyear = scanner.nextInt();
+				System.out.print("검색 월 : ");	int inmonth = scanner.nextInt();
+				if( inyear < 1900 || inyear > 9999  || inmonth < 1 || inmonth > 12  ) {
+					System.out.println("경고 : 지원하지 않는 날짜 입니다.");
+				}else { year = inyear;  month = inmonth; } 
 			}
-			else if( btn == 4 ) { } 
-			
+			else if( btn == 4 ) { 일정추가(); }
+		}
+	} // run 메소드 
+	void 일정추가() {  // 날짜 , 메모 등
+		System.out.println("날짜 : "); String cdate = scanner.next();
+		System.out.println("메모 : "); String ccomment = scanner.next();
+		boolean result = 달력Dao.getInstance().일정추가( cdate , ccomment );
+		if( result ) { System.out.println("일정등록성공");}
+		else { System.out.println("일정등록실패");}
+	} // e end 	
+	
+	void 일정출력() { // 현재 월의 일정만 
+		System.out.println("\n----- 일정 확인 -----");
+		System.out.println("번호\t날짜\t\t메모");
+		
+		String strmonth = "";
+		if( month < 10 ) { strmonth = "0"+month; }
+		else { strmonth = month+"" ; }
+		
+		HashMap< Integer , ArrayList<String> > map 
+			= 달력Dao.getInstance().일정출력( String.valueOf(year) , strmonth );
+		
+		for( Integer key : map.keySet() ) {
+				// keySet() : 모든키 호출 
+			System.out.print( key + "\t");
+			for(  String s : map.get(key) ) {
+				System.out.print( s +"\t" );
+			}
+			System.out.println();
 		}
 		
-	}
-	
-	
-	void 일정추가() {
-		System.out.println("날짜: "); String date = scanner.next();
-		System.out.println("메모: "); String comment = scanner.next();
-		boolean result = DAO.getInstance().일정추가( date , comment );
-		if (result) {
-			System.out.println("일정 추가 성공");
-		}else {System.out.println("일정 추가 실패");}
 		
-		
-		
-		
-	}
-	
-	void 일정출력() {
-		
-		
-		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
+	///////////////////// 활용 ///////////////////
+	// 1. 현재 달력에 일정이 있는 날에는 * 표시 
 	
 	
 	
 }
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
