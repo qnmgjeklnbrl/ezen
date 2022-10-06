@@ -1,4 +1,4 @@
-/*
+ /*
 DDL : 정의어[만들기]
 	1. CREATE	: D,T,V 생성
 	2. ALTER		: D,T,V 수정
