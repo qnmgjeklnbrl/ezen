@@ -1,5 +1,7 @@
 package model.dao;
 
+import java.util.ArrayList;
+
 import model.dto.MemberDto;
 
 public class MemberDao extends Dao {
@@ -89,5 +91,88 @@ public class MemberDao extends Dao {
 		}catch (Exception e) { System.out.println(e); }
 		return false;
 	}
-}
 	
+	// 6. 회원정보 호출 
+	public MemberDto getinfo( String mid ) {
+		MemberDto dto = null;
+		String sql ="select * from member where mid = ?";
+		try {
+			ps =  con.prepareStatement(sql);
+			ps.setString( 1 , mid );
+			rs = ps.executeQuery();
+			if( rs.next() ) {
+				// 1. 풀생성자 
+				dto = new MemberDto(
+						rs.getInt( 1 ) , rs.getString( 2 ) , null ,
+						rs.getString( 4 ), rs.getString( 5 ) ,
+						rs.getString( 6 ), rs.getString( 7 ), 
+						rs.getString( 8 ) , rs.getInt( 9 ) 
+						);
+				// 2. 반환
+				return dto;
+			}
+		}catch (Exception e) { System.out.println( e );}
+		return dto;
+	}
+	
+	// 7. 모든 회원 호출 
+	public ArrayList<MemberDto> getinfolist(){
+		ArrayList<MemberDto> list = new ArrayList<>();	// 1.리스트 선언 
+		String sql ="select * from member";	// 2. SQL 작성 
+		try {
+			ps = con.prepareStatement(sql);	// 3. SQL 연결 
+			rs = ps.executeQuery();			// 4. SQL 실행 
+			while( rs.next() ) {			// 5. SQL 결과 레코드 반복 호출
+				MemberDto dto = new MemberDto(	// 6. 레코드 --> DTO 객체 생성 
+						rs.getInt( 1 ) , rs.getString( 2 ) , null ,
+						rs.getString( 4 ), rs.getString( 5 ) ,
+						rs.getString( 6 ), rs.getString( 7 ), 
+						rs.getString( 8 ) , rs.getInt( 9 ) 
+						);
+				list.add(dto);					// 7. DTO -> 리스트 담기
+			}
+			return list;						// 8. 리스트 반환
+		}catch (Exception e) {System.out.println(e);}
+		return list;
+	}
+	
+	// 8. 회원탈퇴
+	public boolean delete( String mid , String mpassword) {
+		String sql = "delete from member"
+				+ " where mid = ? and mpassword = ? ";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString( 1 , mid );	
+			ps.setString( 2 , mpassword );
+			int count = ps.executeUpdate();  // 삭제 레코드 수 반환
+			if( count == 1 ) { return true; } 
+			// 삭제된 레코드가 1개 이면 성공 
+		}catch (Exception e) {System.out.println(e);} 
+		return false;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}	
