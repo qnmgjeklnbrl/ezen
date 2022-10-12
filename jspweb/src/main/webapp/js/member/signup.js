@@ -24,6 +24,9 @@
 		 5. /^[a-zA-Z0-9+-_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/	: 영대소문자/숫자 @ 영대소문자/숫자 . 영대소문자/숫자
 */
 // 0. 아이콘
+
+
+alert("asdasd")
 let sicon = '<i class="fas fa-check-circle"></i>'
 let bicon = '<i class="fas fa-ban"></i>'
 // 1. col3 div 모두 가져오기 
