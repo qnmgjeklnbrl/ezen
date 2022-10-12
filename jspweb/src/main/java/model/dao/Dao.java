@@ -10,7 +10,7 @@ public class Dao {
 	public Dao() {
 		try { 
 			Class.forName("com.mysql.cj.jdbc.Driver"); 
-			con = DriverManager.getConnection(
+			 con = DriverManager.getConnection(
 					"jdbc:mysql://localhost:3306/jspweb", 
 					"root",
 					"1234");

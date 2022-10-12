@@ -150,6 +150,33 @@ public class MemberDao extends Dao {
 		}catch (Exception e) {System.out.println(e);} 
 		return false;
 	}
+	// 9. 아이디 중복체크 
+	public boolean idcheck( String mid ) {
+		String sql ="select * from member where mid = ?";
+		try {
+			ps=con.prepareStatement(sql);	ps.setString( 1 , mid );
+			rs = ps.executeQuery(); if( rs.next() ) return true;
+		}catch (Exception e) {System.out.println(e);} return false;
+	}
+	
+	// 10. 이메일 중복체크
+	public boolean emailcheck( String memail ) {
+		String sql ="select * from member where memail = ?";
+		try {
+			ps = con.prepareStatement(sql); ps.setString( 1 , memail );
+			rs = ps.executeQuery(); if( rs.next() ) return true;
+		}catch (Exception e) {System.out.println(e);} return false;
+	}
+	
+	// 11. 회원정보 수정 
+	public boolean update(String mid , String mname ) {
+		String sql = "update member set mname = ? where mid = ? ";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString( 1 , mname );	ps.setString( 2 , mid );
+			ps.executeUpdate(); return true;
+		}catch (Exception e) {System.out.println(e);} return false;
+	}
 	
 	
 	
@@ -174,5 +201,4 @@ public class MemberDao extends Dao {
 	
 	
 	
-	
-}	
+}

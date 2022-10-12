@@ -1,4 +1,4 @@
-/*----------------------- */
+/*---------- 아이디찾기 ---------- */
 function findid(){
 	// 1. 해당 id의 input value 와 div 호출 
 	let mname = document.querySelector("#mname").value
@@ -17,9 +17,6 @@ function findid(){
 		}
 	});
 }
-
-
-
 /*--------------  비밀번호찾기 ---------------- */
 function findpassword(){
 	// 1. html 호출 
@@ -36,5 +33,26 @@ function findpassword(){
 		}
 	})
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

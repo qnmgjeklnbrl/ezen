@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+
 	<script src="Chapter2.js" type="text/javascript"></script>
+
 </body>
 </html>

@@ -7,10 +7,19 @@
 </head>
 <body>
 	<%@include file="header.jsp" %>
-	<img alt="" src="img/사진.jpg" width="100%">
-	<div class="webbox">
 	
+	<img alt="" src="img/mainimg.gif" width="100%">
+	
+	<div class="webbox"> 
 		<h3> 메인 페이지 </h3>
 	</div>
+
 </body>
 </html>
+
+
+
+
+
+
+

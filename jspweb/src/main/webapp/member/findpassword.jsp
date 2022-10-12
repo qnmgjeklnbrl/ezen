@@ -6,7 +6,6 @@
 	<meta charset="UTF-8">
 </head>
 <body>
-
 	<%@include file="../header.jsp" %>
 	<div class="webbox">
 		<h3> 비밀번호 찾기 </h3>
@@ -16,6 +15,5 @@
 		<button type="button" onclick="findpassword()">아이디찾기</button>
 	</div>
 	<script src ="../js/member/find.js" type="text/javascript"></script>
-	
 </body>
 </html>
