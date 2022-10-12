@@ -11,7 +11,7 @@ public class BoardDao extends Dao {
 	
 	public boolean board(BoardDto dto) {
 		
-		String sql = "insert into board(title,writer,password,content) values(?,?,?,?)";
+		String sql = "insert into board(title,writer,password,content) values(?,?,?,?)"; //글등록하기
 		
 		try {
 			ps=con.prepareStatement(sql);
@@ -39,7 +39,7 @@ public class BoardDao extends Dao {
 	
 	
 	
-	public ArrayList<BoardDto> getboardlist() {
+	public ArrayList<BoardDto> getboardlist() { //글목록 불러오기
 		ArrayList<BoardDto> list = new ArrayList<>();
 		String sql ="select * from board";
 		try {
