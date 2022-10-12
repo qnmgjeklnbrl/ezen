@@ -27,7 +27,7 @@
 	</form>
 	
 	<div>
-		글목록
+		<h3>글목록</h3>
 		<table id="boardlisttable">
 			
 		
