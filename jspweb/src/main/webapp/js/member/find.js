@@ -1,3 +1,5 @@
+
+
 /*---------- 아이디찾기 ---------- */
 function findid(){
 	// 1. 해당 id의 input value 와 div 호출 
@@ -33,6 +35,16 @@ function findpassword(){
 		}
 	})
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

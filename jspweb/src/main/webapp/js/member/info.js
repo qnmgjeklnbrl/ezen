@@ -1,4 +1,5 @@
 
+
 getmember()
 
 /* ---------------- 회원정보 호출 -------------- */
@@ -98,7 +99,7 @@ function updateaction(){
 	let mname  = document.querySelector('#mname')
 	if( buttons[1].innerHTML === '확인' ){
 		$.ajax({
-			url : "http://localhost:8080/jspweb/member/update" ,
+			url : "/jspweb/member/update" ,
 			data : { "mname" : mname.value } , 
 			success : function( re ){ 
 				if( re === 'true'){
@@ -137,8 +138,6 @@ function updateaction(){
 	선언 : let 객체명 = { 속성명 : 값 , 속성명 : 값 , 속성명 : 값 }
 	호출 : 객체명.속성명
 */
-
-
 
 
 

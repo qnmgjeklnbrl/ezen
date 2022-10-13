@@ -1,4 +1,4 @@
-package controller.member;
+package controller.board;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,32 +7,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.dao.MemberDao;
-
 /**
- * Servlet implementation class update
+ * Servlet implementation class viewload
  */
-@WebServlet("/member/update")
-public class update extends HttpServlet {
+@WebServlet("/board/viewload")
+public class viewload extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		// 누구를 수정할껀지 식별 데이터 필요 == 로그인 정보 == 세션 = 'mid'
-		String mid = (String)request.getSession().getAttribute("mid");
-		// 수정할 내용
-		String mname = request.getParameter("mname");
+		// 1. 요청 [ 클릭한 게시물의 번호 저장 = backend ]
+		// * 세션 : 웹서버에 저장할수 있는 메모리 공간
+			// 브라우저마다 할당 [ 유저 마다 메모리 웹서버 할당 ]
+			// 서버 종료되거나 시간타이머 브라우저 종료되었을때
+			// 세션 == Object
+		int bno = Integer.parseInt(  
+				request.getParameter("bno") ) ;
 		
-		boolean result = MemberDao.getInstance().update( mid , mname );
-		response.getWriter().print(result);
-				
+		request.getSession().setAttribute("bno", bno);
 		
 	}
 
+	
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public update() {
+    public viewload() {
         super();
         // TODO Auto-generated constructor stub
     }
