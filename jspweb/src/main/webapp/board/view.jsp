@@ -42,14 +42,21 @@
 			<tr> <td> 번호 <td> 	<td class="bno"> 		</td> </tr>
 			<tr> <td> 제목 <td> 	<td class="btitle">  	</td> </tr>
 			<tr> <td> 내용 <td> 	<td class="bcontent"> 	</td> </tr>
-			<tr> <td> 작성자 <td> <td class="mno"> 		</td> </tr>
+			<tr> <td> 작성자 <td> <td class="mid"> 		</td> </tr>
+			<tr> <td> 첨부파일 <td> <td class="bfile"> 	</td> </tr>
 		</table>
+		
+		<div class="btnbox">
+			<a href="list.jsp"><button>목록보기</button></a>	
+		</div>
+		
 	</div>
 	
-	<script type="text/javascript" src="http://localhost:8080/jspweb/js/borad/view.js"></script>
+	<script type="text/javascript" src="../js/board/view.js"></script>
 
 </body>
 </html>
+
 
 
 

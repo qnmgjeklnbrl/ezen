@@ -10,16 +10,14 @@ public class BoardDao extends Dao {
 	public static BoardDao getInstance() { return bdao; }
 	
 	// 1. 글등록 
-	public boolean write( String btitle , 
-			String bcontent , int mno) {
+	public boolean write( String btitle , String bcontent , int mno , String bfile ) {
 		
-		String sql ="insert into board(btitle,bcontent,mno) "
-				+ "values( ? , ? , ? )";
+		String sql ="insert into board( btitle , bcontent , mno , bfile) "
+				+ "values( ? , ? , ? , ? )";
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString( 1 , btitle );
-			ps.setString( 2 , bcontent );
-			ps.setInt( 3 , mno);
+			ps.setString( 1 , btitle );	ps.setString( 2 , bcontent );
+			ps.setInt( 3 , mno);		ps.setString( 4 , bfile );
 			ps.executeUpdate(); return true;
 		}catch (Exception e) {System.out.println( e );}
 		return false;
@@ -49,7 +47,7 @@ public class BoardDao extends Dao {
 	
 	// 3. 글 조회
 	public BoardDto getboard( int bno) {
-		String sql ="select b.* , m.mid from member m , board b where m.mno = b.mno and bno = 1";
+		String sql ="select b.* , m.mid from member m , board b where m.mno = b.mno and bno = "+bno;
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -65,6 +63,20 @@ public class BoardDao extends Dao {
 			}
 		}catch (Exception e) {System.out.println(e);}
 		return null;
+	}
+	
+	// 4. 글 삭제 
+	public boolean delete( int bno ) {
+		String sql = "delete from board "
+				+ " where bno="+bno;
+		try {
+			ps = con.prepareStatement(sql);
+			int count = ps.executeUpdate(); 
+			if( count == 1 ) return true;
+		}catch (Exception e) {
+			System.out.println( e );
+		} return false;
+		
 	}
 	
 	
