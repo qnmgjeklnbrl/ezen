@@ -54,9 +54,9 @@ function deleteboard(){
 	let bno = document.querySelector("#bno").value;
 	let password = document.querySelector("#password").value;
 	$.ajax({
-		url:"",
+		url:"http://localhost:8080/board/bdelete",
 		data:{"bno":bno,"password":password},
-		
+		success: function(re){}
 		
 		
 	})

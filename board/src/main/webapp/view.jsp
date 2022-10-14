@@ -39,8 +39,10 @@
 		<button onclick="deleteboardbtn()">글삭제</button>
 	</div>	
 
-
-
+	
+	
+	
+	
 
 
 	

@@ -92,22 +92,10 @@
 	</div> -->
 
 	<!-- JS -->
-	<script type="text/javascript" src="../js/member/info.js"></script>
+	<script type="text/javascript" src="http://localhost:8080/jspweb/js/member/info.js"></script>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -72,7 +72,11 @@ public class BoardDao extends Dao {
 		
 	}
 	
-	
+	public boolean delete(int bno,String password) {//글삭제 메소드
+		
+		return false;
+		
+	}
 	
 }
 
