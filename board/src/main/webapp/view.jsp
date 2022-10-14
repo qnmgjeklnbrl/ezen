@@ -41,6 +41,15 @@
 
 
 
+
+
+	
+
+
+
+
+
+
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="board.js" type="text/javascript"></script>
 </body>
