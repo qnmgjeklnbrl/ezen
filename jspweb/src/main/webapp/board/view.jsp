@@ -36,7 +36,7 @@
 		
 	</div>
 	
-	<script type="text/javascript" src="../js/board/view.js"></script>
+	<script type="text/javascript" src="http://localhost:8080/jspweb/js/board/view.js"></script>
 
 </body>
 </html>

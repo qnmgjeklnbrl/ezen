@@ -25,7 +25,9 @@ public class view extends HttpServlet {
 		
 		// 1. 세션 요청 [ 세션(Object) --> String -> int ] 
 			// 다형성 : 부모가 자식으로 강제 형변환 가능 
+		
 		int bno = (Integer)request.getSession().getAttribute("bno");
+		
 		// 2. DAO 처리 
 		BoardDto dto = 
 		BoardDao.getInstance().getboard(bno);

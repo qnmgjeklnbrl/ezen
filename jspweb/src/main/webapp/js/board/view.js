@@ -72,12 +72,14 @@ function bdelete( bno ){ // 삭제 버튼 클릭시 삭제할 번호를 인수[�
 
 // 3. 댓글 작성함수 
 function rwrite(){
+	
 	let rcontent = document.querySelector(".rcontent").value;
 	$.ajax({
 		url : "/jspweb/reply/rwrite" ,
 		data : {"rcontent" :  rcontent , "type" : "reply" } , 
 		type : "POST" , /* HTTP 메소드 : 1.GET방식=기본값 2. POST방식 */
 		success : function( re ){
+			alert(re)
 			 if( re == 1 ){
 				alert('댓글작성') // location.reload();
 				rlist()

@@ -17,9 +17,12 @@ import model.dao.MemberDao;
 public class rwrite extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 1. 요청 [ 공통 ]
+		
 		request.setCharacterEncoding("UTF-8");
 		String type = request.getParameter("type"); // 타입 요청 [ 0:댓글 1:대댓글[답글] ]
 		String rcontent = request.getParameter("rcontent");	
+		
+		System.out.println("dd");
 		int mno = MemberDao.getInstance().getMno( 
 				(String)request.getSession().getAttribute("mid")
 				) ;
