@@ -38,6 +38,7 @@ public class list extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardDao boardDao = new BoardDao();
+		
 		ArrayList<BoardDto> list =  boardDao.blist();
 		
 		JSONArray array = new JSONArray();
@@ -55,6 +56,8 @@ public class list extends HttpServlet {
 			
 			
 		}
+		System.out.println(array);
+		response.setCharacterEncoding("UTF-8");
 		response.getWriter().print(array);
 		
 	}

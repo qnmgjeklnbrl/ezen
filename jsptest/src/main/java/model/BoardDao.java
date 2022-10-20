@@ -40,7 +40,7 @@ public class BoardDao {
 	
 	
 	public ArrayList<BoardDto> blist() {
-		String sql = "selec * from board";
+		String sql = "select * from board";
 		ArrayList<BoardDto> list = new ArrayList<>();
 		try {
 			ps=con.prepareStatement(sql);

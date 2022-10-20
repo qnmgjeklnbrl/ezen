@@ -19,7 +19,9 @@ function bwrite(){
 		},
 		success: function(re){
 			
-			
+		if(re==='true'){
+			alert("글 등록 성공")
+		}
 		}
 		
 	})

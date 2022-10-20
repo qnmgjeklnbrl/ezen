@@ -6,7 +6,7 @@ CREATE TABLE board(
     bcontent LONGTEXT,
     bwriter VARCHAR(50),
     bpassword VARCHAR(50),
-    bdate DATETIME DEFAULT NOW(),
+    bdate DATETIME DEFAULT NOW() NOT NULL,
     bview INT
     
 
