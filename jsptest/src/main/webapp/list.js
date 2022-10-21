@@ -11,7 +11,7 @@
 			let b = board[i] 
 				html += '<tr>' + 
 							'<td>'+b.bno+'</td>'+
-							'<td onclick="viewload('+b.bno+')">'+b.btitle+'</td>'+
+							'<td><a href="http://localhost:8282/jsptest/view.html?bno='+b.bno+'">'+b.btitle+'</a></td>'+
 							'<td>'+b.bwriter+'</td>'+
 							'<td>'+b.bdate+'</td>'+
 							'<td>'+b.bview+'</td>'+
@@ -24,3 +24,6 @@
 	
 	
 })
+
+
+

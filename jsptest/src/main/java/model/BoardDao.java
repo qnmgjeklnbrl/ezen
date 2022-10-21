@@ -68,5 +68,34 @@ public class BoardDao {
 		return list;
 	}
 	
+	public BoardDto getboard(int bno) {
+		String sql = "select btitle,bwriter,bcontent from board where bno="+bno;
+		BoardDto boardDto = new BoardDto();
+		try {
+			ps=con.prepareStatement(sql);
+			rs= ps.executeQuery();
+			if(rs.next()) {	
+				boardDto.setBtitle(rs.getString(1));
+				boardDto.setBwriter(rs.getString(2));
+				boardDto.setBcontent(rs.getString(3));		
+			}return boardDto;
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return boardDto;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
