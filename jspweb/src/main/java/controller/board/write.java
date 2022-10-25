@@ -62,7 +62,7 @@ public class write extends HttpServlet {
 			// 1. 현재 배포된 프로젝트의 경로 찾기 
 			//String uploadpath = request.getSession().getServletContext().getRealPath("/") ; // jspweb
 		String uploadpath = request.getSession().getServletContext().getRealPath("/upload") ; // jspweb/폴더명
-		
+		System.out.println(uploadpath);
 		// 2. Multipart 객체 생성 
 		MultipartRequest multi = new MultipartRequest(
 							request ,  						// 1. 요청방식 
