@@ -11,8 +11,9 @@ function regist(){
 		processData : false ,
 		contentType : false ,
 		success: function( re ){ 
-			console.log( re )
-		 }
+			if( re == 'true' ){ alert("제품등록") }
+			else{ alert("제품등록실패") }
+		}
 	})
 }
 // 2. 첨부파일 등록(변경 = change ) 했을때 [사진]미리보기
@@ -44,6 +45,7 @@ function setpcategory(){
 			if( re == 'true'){
 				alert('카테고리등록')
 				document.querySelector('.pcategoryaddbox').innerHTML = ''
+				getpcategory() // 카테고리 호출 메소드 실행
 			}else{ alert('카테고리실패') }
 		} 
 	})
@@ -61,11 +63,18 @@ function getpcategory(){
 				let category = json[i];
 				html += '<input type="radio" name="pcno" value='+category.pcno+'>'+category.pcname;
 			}
-			
 			document.querySelector(".pcategorybox").innerHTML = html;
 		}
 	})
 }
+
+
+
+
+
+
+
+
 
 
 

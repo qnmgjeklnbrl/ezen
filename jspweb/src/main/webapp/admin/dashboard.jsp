@@ -8,6 +8,7 @@
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 	<link href="/jspweb/css/dashboard.css" rel="stylesheet">
+	
 </head>
 <body>
 	<!-- 관리자 페이지 -->
@@ -23,8 +24,8 @@
 	<div class="sidebar">
 		<h1> admin menu </h1>
 		<ul class="side_menu">
-			<li class="side_item"><a onclick="pagechange('regist.jsp')">제품 등록</a></li>
-			<li class="side_item"><a href="#">제품 목록</a></li>
+			<li class="side_item"><a onclick="pagechange('regist.jsp')" >제품 등록</a></li>
+			<li class="side_item"><a onclick="pagechange('list.jsp')" >제품 목록</a></li>
 			<li class="side_item"><a href="#">재고 관리</a></li>
 			<li class="side_item"><a href="#">주문 관리</a></li>
 			<li class="side_item"><a href="#">매출 관리</a></li>
@@ -45,7 +46,4 @@
 
 </body>
 </html>
-
-
-
 
