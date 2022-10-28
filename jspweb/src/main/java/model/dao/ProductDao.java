@@ -47,9 +47,17 @@ public class ProductDao extends Dao {
 		
 	}
 	// 4. 제품 출력  [ R ]
-	public ArrayList< ProductDto > getProductlist(){
+	public ArrayList< ProductDto > getProductlist( String option ){
+		
 		ArrayList< ProductDto > list = new ArrayList<>();
-		String sql = "select * from product";
+		String sql = null;
+		if( option.equals("all") ) { // 1. 조건없는 모든 제품 출력 
+			 sql = "select * from product";
+		}else if( option.equals("pactive1")) { // 2. [ 판매중 ] 상태 만 모든 제품 출력 
+			 sql = "select * from product where pactive = 1 order by pdate desc";
+		}
+
+				
 		try {
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
@@ -66,7 +74,7 @@ public class ProductDao extends Dao {
 	}
 	
 	// 5. 제품 삭제 
-	public boolean deleteproduct( int pno ) {
+	public boolean deleteprodcut( int pno ) {
 		String sql = "delete from product "
 				+ "where pno = "+pno;
 		try {
@@ -95,43 +103,25 @@ public class ProductDao extends Dao {
 		}catch (Exception e) {System.out.println(e);} return null;
 	}
 	
-	//7. 제품수정 
-	public boolean updateProduct(ProductDto dto) {
-		/*제품번호 : <input type="text" readonly="readonly" name="pno"  		class="pno"  > <br> 
-		제품명 : 	<input type="text" 						name="pname"  	class="pname" > <br>
-		설명 : 	<textarea rows="" cols="" 				name="pcomment"	class="pcomment" ></textarea> <br>
-		가격 : 	<input type="text" 						name="pprice"	class="pprice" > <br>
-		할인율 : 	<input type="text" 						name="pdiscount"class="pdiscount" > <br>
-		카테고리 : <span class="categorybox"></span>  <br>
-		제품상태 : 
-			<input type="radio" value="0"> 준비중 
-			<input type="radio" value="1"> 판매중
-			<input type="radio" value="2"> 재고없음<br>
-		<input type="file" id="pimg" name="pimg"> <br>*/
-		String sql ="update product set pname=? , pcomment=? ,pprice=? ,pdiscount=? ,pcno=?"
-				+ " ,pimg =? where pno=?";
+	// 7. 제품 업데이트 
+	public boolean updateProduct( ProductDto dto ) {
+		String sql = "update product set pname = ? , pcomment=? , pprice=? , pdiscount=? , pactive=? , pimg=? , pcno=? "
+				+ "where pno = ?";
 		try {
-			ps=con.prepareStatement(sql);
-			ps.setString(1, dto.getPname());
-			System.out.println(dto.getPname());
-			ps.setString(2, dto.getPcomment());
-			ps.setInt(3, dto.getPprice());
-			ps.setDouble(4, dto.getPdiscount());
-			ps.setInt(5, dto.getPcno());
-			ps.setString(6, dto.getPimg());
-			ps.setInt(7,dto.getPno());
-			ps.executeUpdate();
-			
-			
-		} catch (Exception e) {
-			System.out.println(e);
-			return false;
-		}return true;
-		
+			ps = con.prepareStatement(sql);
+			ps.setString( 1 , dto.getPname());	ps.setString( 2 , dto.getPcomment());
+			ps.setInt( 3 , dto.getPprice());	ps.setFloat( 4 , dto.getPdiscount());
+			ps.setByte( 5 , dto.getPactive());	ps.setString( 6 , dto.getPimg());
+			ps.setInt( 7 , dto.getPcno());		ps.setInt( 8 , dto.getPno());
+			ps.executeUpdate(); return true;
+		}catch (Exception e) { System.out.println(e);	} return false;
 	}
-	
-	
 }
+
+
+
+
+
 
 
 

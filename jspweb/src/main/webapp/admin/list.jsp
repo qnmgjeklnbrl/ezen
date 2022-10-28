@@ -54,9 +54,9 @@
 				할인율 : 	<input type="text" 						name="pdiscount"class="pdiscount" > <br>
 				카테고리 : <span class="pcategorybox"></span>  <br>
 				제품상태 : 
-					<input type="radio" value="0"> 준비중 
-					<input type="radio" value="1"> 판매중
-					<input type="radio" value="2"> 재고없음<br>
+					<input type="radio" value="0" name="pactive" class="pactive"> 준비중 
+					<input type="radio" value="1" name="pactive" class="pactive"> 판매중
+					<input type="radio" value="2" name="pactive" class="pactive"> 재고없음<br>
 				<input type="file" id="pimg" name="pimg"> <br>
 			 </form>
 	      </div>
@@ -72,11 +72,17 @@
 	
 	
 	<!--  ------------------------------------  -->
-	<script type="text/javascript" src="../js/admin/regist.js"></script>
 	<script src="/jspweb/js/admin/list.js" type="text/javascript"></script>
 
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 

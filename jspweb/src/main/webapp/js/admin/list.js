@@ -3,7 +3,7 @@ getproduct()
 function getproduct(){
 	$.ajax({
 		url :"/jspweb/admin/regist" ,
-		data : { "type" : 1 } , 	// 타입이 1 이면 모든 제품 호출 
+		data : { "type" : 1  , "option" : "all"} , 	// 타입이 1 이면 모든 제품 호출 
 		type : "get", // 해당 서블릿주소의 doGet메소드과 통신
 		success : function( re ){
 			let json = JSON.parse( re )
@@ -35,8 +35,7 @@ function getproduct(){
 // 2-1. 수정 모달 실행 메소드 
 function updatemodal( pno ){
 	// 1. 해당 모달을 열러주는 버튼에 강제클릭 이벤트 실행 
-		document.querySelector(".updatemodalhtn").click()
-	 // 해당 버튼을 강제클릭하는 이벤트 실행
+	document.querySelector(".updatemodalhtn").click() // 해당 버튼을 강제클릭하는 이벤트 실행
 	// 2. 해당 모달에 기존 내용물 넣기 
 		// 2-1 : 해당 pno의 제품정보 호출 
 		$.ajax({
@@ -44,46 +43,80 @@ function updatemodal( pno ){
 			data : { "type" : 2 , "pno" : pno } , 	// 타입이 2 이면 개별 제품 호출 
 			type : "get" ,
 			success : function( re ){ 
- 						let json =JSON.parse(re)
- 						document.querySelector(".pno").value=pno
- 						document.querySelector(".pname").value = json.pname
- 						document.querySelector(".pcomment").value = json.pcomment
- 						document.querySelector(".pprice").value = json.pprice
- 						document.querySelector(".pdiscount").value = json.pdiscount
- 						getpcategory();
- 
- 					}
+				let json = JSON.parse(re)
+				document.querySelector('.pno').value = json.pno
+				document.querySelector('.pname').value = json.pname
+				document.querySelector('.pcomment').value = json.pcomment
+				document.querySelector('.pprice').value = json.pprice
+				document.querySelector('.pdiscount').value = json.pdiscount
+				
+						// 카테고리 호출 
+						$.ajax({
+							url : "/jspweb/admin/pcategory" , 
+							type : "get" , 
+							success:function(re){
+								let json2 = JSON.parse(re)
+								let html = ''
+								for( let i = 0 ; i<json2.length ; i++ ){
+									let category = json2[i];
+									if( category.pcno == json.pcno ){
+										
+										html += '<input checked type="radio" name="pcno" value='+category.pcno+'>'+category.pcname;
+									}else{
+										html += '<input type="radio" name="pcno" value='+category.pcno+'>'+category.pcname;
+									}
+									
+								}
+								document.querySelector(".pcategorybox").innerHTML = html;
+							}
+						})
+						
+						// 제품 상태 호출 
+						let pactivebtns =  document.querySelectorAll('.pactive');
+						if( json.pactive == 0 ){ pactivebtns[0].checked = true }
+						if( json.pactive == 1 ){ pactivebtns[1].checked = true }
+						if( json.pactive == 2 ){ pactivebtns[2].checked = true }
+						
+			}
 		})
 }
 // 2-2. 수정 처리 메소드 
 function updateproduct(){
-	let form = document.querySelector(".updateform")
-	let formdata = new FormData(form)
-	$.ajax({
-		url:"/jspweb/admin/regist",
-		type:"put",
-		data:formdata,
-		processData: false,
-		contentType:false,
-		success:function(re){
-			
-			document.querySelector(".modelclosebtn").click()
-			pagechange("list.jsp");
-			
+	// 1.수정할 정보
+	let form = document.querySelector('.updateform')
+	let formdata = new FormData( form )
+	// fomrdata 속성 추가 
+		// formdata.set('속성명' : 데이터 )
+		// formdata.set('pno' : pno )
+	$.ajax({ 
+		url : "/jspweb/admin/regist" , 
+		type : "put" ,  // 해당 서블릿주소 의 doPut메소드과 통신
+		data : formdata , 
+		processData : false , 
+		contentType : false , 
+		success : function( re ){ 
+			if( re === 'true'){
+				alert("수정성공")
+				// 1. 모달닫기
+				document.querySelector(".modelclosebtn").click()
+				// 2. 새로고침
+				pagechange('list.jsp');
+			}else{ alert("수정실패")}
 		}
 	})
+	
 }
-
 
 // 3. 삭제 처리 메소드 
 function deleteproduct( pno ){
+	console.log(pno)
 	if( confirm("정말 삭제하시겠습니까?") ){ // 확인 버튼을 눌렀을때
 		$.ajax({
 			url :"/jspweb/admin/regist" ,
-			data : { "pno" : pno } ,
+			data : { "pno" : pno	} ,
 			type : "delete" ,  // 해당 서블릿주소 의 doDelete메소드과 통신
 			success: function( re ){ 
-				if( re ==='true' ){ alert('삭제성공'); pagechage('list.jsp'); }
+				if( re ==='true' ){ alert('삭제성공'); pagechange('list.jsp'); }
 					// pagechage() : dashboard.jsp내  dashboard.js가 포함되어 있기때문에 호출이 가능하다.   
 						// 현재 구조상 dashboard.jsp내 특정태그에 list.jsp 포함
 				else{ alert('삭제실패') }
@@ -92,21 +125,13 @@ function deleteproduct( pno ){
 	} // if end 
 } // f end 
 
+
 /* 
 	server 프로젝트 폴더 클릭 -> server.xml  -> 63줄 정도
 		- 톰캣 서버의 기본설정값은 get,post 방식만 객체[Body] 전송 
 	원본 : <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
 	수정 : <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443" parseBodyMethods="GET,POST,PUT,DELETE"/>
  */
-
-
-
-
-
-
-
-
-
 
 
 
