@@ -1,9 +1,11 @@
 package model.dao;
 
+import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.dto.PcategoryDto;
 import model.dto.ProductDto;
+import model.dto.StockDto;
 
 public class ProductDao extends Dao {
 
@@ -116,7 +118,60 @@ public class ProductDao extends Dao {
 			ps.executeUpdate(); return true;
 		}catch (Exception e) { System.out.println(e);	} return false;
 	}
+
+	//8.재고 등록
+	public boolean setstock(String psize,int pno,String pcolor,int pstock) {
+		
+		String sql ="insert into productsize(psize,pno) values(?,?)";
+		try {
+			ps=con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+			ps.setString(1, psize);
+			ps.setInt(2, pno);
+			ps.executeUpdate();
+			//방금 insert  된 PK값 가져오기
+				//1.con.preapareStatement(sql,Statement.RETURN_GENERATED_KEYS)
+					//!:Statement[java.sql 패키지]
+				//2.ps.getGeneratedKeys():pk값 호출
+			rs=ps.getGeneratedKeys();
+			if(rs.next()) {
+				int psno = rs.getInt(1);//pk호출
+				sql="insert into productstock (pcolor,pstock,psno)"
+						+ "values(?,?,?)";
+				ps=con.prepareStatement(sql);
+				ps.setString(1,pcolor);
+				ps.setInt(2,pstock);
+				ps.setInt(3,psno);
+				ps.executeUpdate();return true;
+			}
+		} catch (Exception e) {System.out.println(e);}return false;
+		
+	}
+	
+	//9. 제품별 재고 출력
+	public ArrayList<StockDto> getstock(int pno){
+		ArrayList<StockDto> list = new ArrayList<>();
+		String sql = "select ps.psno , ps.psize , pst.pstno , pst.pcolor , pst.pstock "
+				+ " from productsize ps , productstock pst"
+				+ " where ps.psno = pst.psno and ps.pno = "+pno
+				+ " order by ps.psize desc";
+		
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while( rs.next() ) {
+				StockDto dto = new StockDto(
+						rs.getInt(1), rs.getString(2), 
+						rs.getInt(3), rs.getString(4), rs.getInt(5));
+			
+				list.add(dto);
+			}
+		}catch (Exception e) { System.out.println(e);	} return list;
+		
+	}
+	
+	
 }
+
 
 
 

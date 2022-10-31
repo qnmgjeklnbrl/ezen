@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	
 	<div class="container"> <!-- b: container -->
 		<h3> 제품 등록 </h3>
 		<form>

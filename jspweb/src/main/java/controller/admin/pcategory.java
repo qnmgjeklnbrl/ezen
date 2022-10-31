@@ -34,16 +34,18 @@ public class pcategory extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<PcategoryDto> list  = new ProductDao().getPcategory();
+		// 2. db처리  
+		ArrayList<PcategoryDto> list 
+			= new ProductDao().getPcategory();
+		// 3. 리스트 --> json 변환[ js ]
 		JSONArray array = new JSONArray();
-		for(PcategoryDto dto: list ) {
-			
+		for( PcategoryDto dto :  list ) {
 			JSONObject object = new JSONObject();
-			object.put("pcno", dto.getPcno());object.put("pcname", dto.getPcname());
-			array.add(object);
-			
+			object.put("pcno", dto.getPcno() ); 
+			object.put("pcname", dto.getPcname() );
+			array.add(object); 
 		}
-		response.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8"); 
 		response.getWriter().print(array);
 	}
 

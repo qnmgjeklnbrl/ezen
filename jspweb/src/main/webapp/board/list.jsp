@@ -11,7 +11,7 @@
 
 </head>
 <body>
-	<%@include file="../header.jsp" %>
+	
 	<div class="webbox">
 		<a href="write.jsp"> 글쓰기 </a>
 		<!-- JSP로 테이블 표시   [ 서블릿,js 제외한 ] -->
