@@ -10,7 +10,7 @@ function getpactive1(){
 			for(let i = 0; i<json.length;i++){
 				let a = json[i]
 				html+='<div class="item">	'+
-							'	<a href="#">  '+
+							'	<a href="/jspweb/product/view.jsp?pno='+a.pno+'">  '+
 							'		<img src="/jspweb/admin/pimg/'+a.pimg+'">'+
 							'	</a>'+
 							'	<div class="item_info">'+

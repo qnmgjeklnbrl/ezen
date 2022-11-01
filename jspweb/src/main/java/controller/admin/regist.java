@@ -59,7 +59,7 @@ public class regist extends HttpServlet { // HttpServlet 서블릿클래스[ htt
 		response.setCharacterEncoding("UTF-8");
 		if( type.equals("1") ) {
 			
-			// 1.전체출력 2.판매중 출력 
+			// 1.전체출력 2.판매중 출력
 			String option = request.getParameter("option");
 			
 			//////////////////////////////////////////// 모든 제품 출력 //////////////////////////
@@ -78,7 +78,6 @@ public class regist extends HttpServlet { // HttpServlet 서블릿클래스[ htt
 				object.put("pcno", list.get(i).getPcno() );			
 				array.add(object);
 			}
-			
 			response.getWriter().print(array);
 			///////////////////////////////////////////////////////////////////////////////////
 			
