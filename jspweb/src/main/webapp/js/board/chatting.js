@@ -43,7 +43,7 @@ function emosend( i ){	// 이모티콘 전송
 function enterkey(){ if(window.event.keyCode == 13){ send() } }
 function onmessage(e){
 	let msg = JSON.parse( e.data ) // 받은 데이터 객체
-	
+	console.log(msg)
 	if( msg.type == "msg"){ // 전송타입이 메시지 이면
 		/////////////////////////////////////// 1. 일반 메시지 전송 코드 /////////////////////////////////////////
 		if( msg.mid == mid ){ // 본인 글이면  // 보낸사람 아이디와 접속된 아이디가 동일하면
